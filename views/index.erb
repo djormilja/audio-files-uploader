@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Uppy</title>
+    <link href="https://releases.transloadit.com/uppy/v1.28.1/uppy.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="drag-drop-area"></div>
+
+    <script src="https://releases.transloadit.com/uppy/v1.28.1/uppy.min.js"></script>
+    <script>
+      const AwsS3Multipart = Uppy.AwsS3Multipart
+      var uppy = Uppy.Core()
+        .use(Uppy.Dashboard, {
+          inline: true,
+          target: '#drag-drop-area'
+        })
+        .use(AwsS3Multipart, {
+          limit: 5,
+          companionUrl: '/'
+        })
+
+      uppy.on('complete', (result) => {
+        console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      })
+    </script>
+  </body>
+</html>
