@@ -2,6 +2,7 @@
 
 gem install sinatra
 gem install uppy-s3_multipart
+gem install pg
 
 2. Update the bucket's CORS configuration. In the AWS S3 Console go to your bucket, click on "Permissions" tab and then on "CORS configuration". There paste in the following:
 ```

@@ -23,6 +23,16 @@
 
       uppy.on('complete', (result) => {
         console.log('Upload complete! We’ve uploaded these files:', result.successful)
+
+        fetch('/upload-complete', {
+          method: 'put',
+          // Send and receive JSON.
+          headers: {
+            accept: 'application/json',
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(result.successful)
+        })
       })
     </script>
   </body>
